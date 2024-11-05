@@ -1,3 +1,5 @@
+CREATE DATABASE hotel;
+
 CREATE TABLE hospedes(
     id_hospede SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -61,5 +63,11 @@ INSERT INTO reservas (id_hospede, id_quarto, data_inicio, data_termino) VALUES
 SELECT r.id_reserva, h.nome, q.numero, r.data_inicio, r.data_termino
 FROM reservas r
 INNER JOIN quartos q ON r.id_quarto = q.id_quarto
-INNER JOIN hospedes h ON r.id_hospede = h.id_hospede;
+INNER JOIN hospedes h ON r.id_hospede = h.id_hospede
 WHERE r.data_termino < CURRENT_DATE;
+
+SELECT r.id_reserva, h.nome, q.numero, r.data_inicio, r.data_termino
+FROM reservas r
+INNER JOIN quartos q ON r.id_quarto = q.id_quarto
+INNER JOIN hospedes h ON r.id_hospedes = h.id_hospedes;
+
