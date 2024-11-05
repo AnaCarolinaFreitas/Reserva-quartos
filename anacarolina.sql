@@ -58,4 +58,8 @@ INSERT INTO reservas (id_hospede, id_quarto, data_inicio, data_termino) VALUES
 (4, 9, '2024-11-01', '2024-11-20'),
 (5, 2, '2024-10-29', '2024-11-20');
 
-
+SELECT r.id_reserva, h.nome, q.numero, r.data_inicio, r.data_termino
+FROM reservas r
+INNER JOIN quartos q ON r.id_quarto = q.id_quarto
+INNER JOIN hospedes h ON r.id_hospede = h.id_hospede;
+WHERE r.data_termino < CURRENT_DATE;
