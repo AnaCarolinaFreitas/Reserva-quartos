@@ -69,5 +69,10 @@ WHERE r.data_termino < CURRENT_DATE;
 SELECT r.id_reserva, h.nome, q.numero, r.data_inicio, r.data_termino
 FROM reservas r
 INNER JOIN quartos q ON r.id_quarto = q.id_quarto
-INNER JOIN hospedes h ON r.id_hospedes = h.id_hospedes;
+INNER JOIN hospedes h ON r.id_hospede = h.id_hospede;
+
+SELECT q.numero, q.andar
+FROM quartos q
+LEFT JOIN reservas r ON q.id_quarto = r.id_quarto
+WHERE r.id_quarto IS NULL;
 
